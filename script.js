@@ -1,5 +1,4 @@
-ourTeam = [
-    {
+ourTeam = [{
         name: 'Wayne Barnett',
         job: 'Founder & CEO',
         img: 'img/wayne-barnett-founder-ceo.jpg'
@@ -30,9 +29,9 @@ ourTeam = [
         img: 'img/barbara-ramos-graphic-designer.jpg'
     }
 ];
+let cardContainer = document.getElementsByClassName('team-container')[0]
 
 function printCard() {
-    let cardContainer = document.getElementsByClassName('team-container')[0];
     for (let i = 0; i < ourTeam.length; i++) {
         cardContainer.innerHTML += `
     <div class="team-card">
@@ -46,36 +45,48 @@ function printCard() {
     </div>`
     }
 }
+console.log(ourTeam)
 printCard();
 
-let inputName = document.getElementById('name');
+/////////Bonus
 
-let job = document.getElementById('role');
 
-let userImage = document.getElementById('image');
-
-let addButton= document.getElementById('addMemberButton');
-
+let addButton = document.getElementById('addMemberButton');
+addButton.style.cursor = 'Pointer';
 addButton.addEventListener('click', addUser);
 
+let job = document.getElementById('role');
+let inputName = document.getElementById('name');
+let userImage = document.getElementById('image');
 
-function addUser(){
+imageArray = [
+    'img/new-team-member-01.jpg',
+    'img/new-team-member-02.jpg',
+    'img/new-team-member-03.jpg',
+    'img/new-team-member-04.jpg'
+];
 
+
+function addUser() {
+
+ for (let i = 0; i < imageArray.length; i++) { 
+    
+    newUser = {
+        name: `${inputName.value}`,
+        job: `${job.value}`,
+        img: `${imageArray[i]}`
+    }
 }
+    ourTeam.push(newUser)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log('ciao')
+        cardContainer.innerHTML += `
+    <div class="team-card">
+            <div class="card-image">
+                <img src=" ${imageArray[userImage.value]} " alt="Wayne Barnett"/>
+            </div>
+        <div class="card-text">
+            <h3> ${newUser.name} </h3>
+            <p> ${newUser.job} </p>
+         </div>
+    </div>`
+}
